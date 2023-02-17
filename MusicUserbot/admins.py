@@ -16,7 +16,7 @@ async def skip(client, m: Message):
         if op == 0:
             await m.reply("**❌ Tidak ada apapun didalam antrian untuk dilewati!**")
         elif op == 1:
-            await m.reply("Antrian Kosong, Meninggalkan Obrolan Suara**")
+            await m.reply("**Antrian Kosong, Meninggalkan Obrolan Suara**")
         else:
             await m.reply(
                 f"**⏭ Melewati pemutaran** \n**🎵 Sekarang memutar** - [{op[0]}]({op[1]}) | `{op[2]}`",
@@ -70,7 +70,7 @@ async def pause(client, m: Message):
         except Exception as e:
             await m.reply(f"**ERROR** \n`{e}`")
     else:
-        await m.reply("** ❌ Tidak ada apapun yang sedang diputar!**")
+        await m.reply("**❌ Tidak ada apapun yang sedang diputar!**")
 
 
 @Client.on_message(filters.command(["resume"], prefixes=f"{HNDLR}"))
@@ -82,7 +82,7 @@ async def resume(client, m: Message):
         try:
             await call_py.resume_stream(chat_id)
             await m.reply(
-                f"**▶ Melanjutkan pemutaran yang dijeda**\n\n• Untuk menjeda pemutaran, gunakan perintah » {HNDLR}pause**"
+                f"**▶ Melanjutkan pemutaran yang dijeda**\n\n• Untuk menjeda pemutaran, gunakan perintah » {HNDLR}pause"
             )
         except Exception as e:
             await m.reply(f"**ERROR** \n`{e}`")
