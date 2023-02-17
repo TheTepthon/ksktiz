@@ -53,6 +53,10 @@ async def skip_item(chat_id, h):
         chat_queue = get_queue(chat_id)
         try:
             x = int(h)
+            if x == 0:
+                await call_py.leave_group_call(chat_id)
+                clear_queue(chat_id)
+                return 1
             songname = chat_queue[x][0]
             chat_queue.pop(x)
             return songname
