@@ -12,10 +12,10 @@ def authorized_users_only(func: Callable) -> Callable:
         if message.from_user.id in SUDO_USERS:
             return await func(client, message)
 
-        administrators = await get_administrators(message.chat)
+        administrators = await get_administrators(message.chat.id)
 
         for administrator in administrators:
-            if administrator == message.from_user.id:
+            if administrator.user.id == message.from_user.id:
                 return await func(client, message)
 
     return decorator
