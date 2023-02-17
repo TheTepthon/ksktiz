@@ -3,7 +3,7 @@ from typing import List
 from pyrogram.types import Chat
 
 from MusicUserbot.helpers.get_admins import get as gett
-from MusicUserbot.helpers.get_admins import set
+from MusicUserbot.helpers.get_admins import set as sett
 
 
 async def get_administrators(chat: Chat) -> List[int]:
@@ -19,5 +19,5 @@ async def get_administrators(chat: Chat) -> List[int]:
             if administrator.can_manage_voice_chats:
                 to_set.append(administrator.user.id)
 
-        set(chat.id, to_set)
+        sett(chat.id, to_set)
         return await get_administrators(chat)
